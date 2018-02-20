@@ -1,7 +1,7 @@
 # composer dir and files
 vendor
 composer.phar
-#composer.lock
+composer.lock
 
 # phpunit files
 phpunit.phar
