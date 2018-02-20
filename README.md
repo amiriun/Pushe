@@ -7,7 +7,7 @@
 ## Instalation
 
 
-To install Via Composer , use the command bellow:
+To install via Composer , use the command bellow:
 
 ```
 composer require amiriun/pushe
