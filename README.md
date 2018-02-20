@@ -7,7 +7,7 @@ PHP API Client for pushe.co ( push notification service )
 
 
 
-##Instalation
+ ##Instalation
 
 
 To install Via Composer , use the command bellow:
