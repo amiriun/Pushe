@@ -19,7 +19,7 @@ class Pushe
         $action = new RequestToPushe();
         $request = $action->send($this);
 
-        return "ok"; // todo
+        return $request; // todo
 //        return new PusheResponse($request);
 
     }

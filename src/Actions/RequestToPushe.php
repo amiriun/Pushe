@@ -9,16 +9,13 @@ class RequestToPushe extends AbstractAction implements ActionInterface
 {
     public function send(Pushe $manager)
     {
-        $request = $this->request(
+        return $this->request(
             'POST',
             '',
             [
                 RequestOptions::JSON => $this->getRequestBody($manager)
             ]
         );
-
-        return $request->getBody();
-
     }
 
     /**

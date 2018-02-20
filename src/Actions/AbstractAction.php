@@ -9,7 +9,9 @@
 namespace Amiriun\Pushe\Actions;
 
 
+use Amiriun\Pushe\Configuration;
 use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
 
 abstract class AbstractAction
 {
@@ -19,8 +21,9 @@ abstract class AbstractAction
             [
                 'base_uri' => 'https://panel.pushe.co/api/v1/notifications/',
                 'headers'  => [
-                    'Authorization' => 'Token e7cbeee90e11e6f43a4d5585c732bfbf2ba62e1e',
+                    'Authorization' => 'Token ' . Configuration::make()->getToken(),
                     'Content-Type'  => 'application/json',
+                    'Accept'        => 'application/json',
                 ]
             ]
         );
@@ -28,6 +31,14 @@ abstract class AbstractAction
 
     public function request($method, $uri = '', array $options = [])
     {
-        return $this->guzzle->request($method, $uri, $options);
+        if (Configuration::make()->getIsAsync()) {
+            $this->guzzle->requestAsync($method, $uri, $options);
+
+            return;
+        }
+
+        $request = $this->guzzle->request($method, $uri, $options);
+
+        return $request->getBody()->getContents();
     }
 }

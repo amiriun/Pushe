@@ -40,7 +40,7 @@ class Configuration
     }
 
     public function getIsAsync(){
-       return isset($this->isAsync);
+       return $this->isAsync;
     }
 
     public function setApplicationsPackageName($names){
