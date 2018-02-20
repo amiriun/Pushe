@@ -24,16 +24,16 @@ use \Amiriun\Pushe\Pushe;
 // Firstly,you have to set your configuration
 Configuration::make()->setToken("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 Configuration::make()->setIsAsync(true);
-Configuration::make()->setApplicationsPackageName(["amiriundd"]);
+Configuration::make()->setApplicationsPackageName(["com.example.myApp"]);
 
 // If you'd like to filter push to some users with some parameters you can use filter:
 $filter = (new Filter())
-        ->byInstanceId('nnnnn')
-        ->byAndroidId('xxx')
-        ->byBrand('lg')
-        ->byOperator('mci')
-        ->byMobileNetwork('lte')
-        ->byPushIdOrIMEI('nnnnn');
+        ->byInstanceId(['xxxxx','yyyyy']) // Filter by instance id of web push users
+        ->byAndroidId(['xxx','yyy']) // Filter by android id of android users
+        ->byBrand(['lg']) // Filter by mobile's brand of users
+        ->byOperator(['mci']) // Filter by users who has specify operator
+        ->byMobileNetwork(['lte']) // Filter by network of users
+        ->byPushIdOrIMEI('nnnnn'); // Filter by user's push id or imei
         
         
 // Finally you can fill your notification data to send
