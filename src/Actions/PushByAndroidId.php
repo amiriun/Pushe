@@ -35,20 +35,19 @@ class PushByAndroidId extends AbstractAction implements ActionInterface
         // todo
         $data = [
             'applications' => $manager->getAppPackageNames(),
-            "filter" => [
-                "device_id" => $manager->getAndroidIds()
-            ],
+            "filter"       => $manager->getFilter()->prepareData(),
             "notification" => [
-                "title"   => $manager->getTitle(),
-                'content' => $manager->getContent(),
-                'icon' => $manager->getIcon(),
-                'sound_url' => $manager->getSound(),
+                "title"      => $manager->getTitle(),
+                'content'    => $manager->getContent(),
+                'icon'       => $manager->getIcon(),
+                'sound_url'  => $manager->getSound(),
                 'visibility' => $manager->getVisibility(),
+                'show_app'   => $manager->getVisibility(),
             ]
         ];
 
-        if(empty($manager->getAndroidIds())){
-            unset($data['filter']['device_id']);
+        if (empty($manager->getFilter())) {
+            unset($data['filter']);
         }
 
         return $data;
