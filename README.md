@@ -29,9 +29,9 @@ Configuration::make()->setApplicationsPackageName(["amiriundd"]);
 
 // if you'd like to filter push to some users with some parameters you can use filter:
 $filter = (new Filter())
-//        ->byInstanceId('nnnnn')
-//        ->byAndroidId('xxx')
-//        ->byBrand('lg')
+        ->byInstanceId('nnnnn')
+        ->byAndroidId('xxx')
+        ->byBrand('lg')
         ->byOperator('mci')
         ->byMobileNetwork('lte')
         ->byPushIdOrIMEI('nnnnn');
