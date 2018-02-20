@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit 
+    bootstrap="test/bootstrap.php"
+    colors="false"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    stopOnFailure="false"
+    verbose="true">
+    
+    <testsuites>
+        <testsuite name="all">
+            <directory>test/</directory>
+        </testsuite>
+    </testsuites>
+    
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src/</directory>
+            <exclude>
+                <directory suffix="Exception.php">src/</directory>
+                <directory suffix="Interface.php">src/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    
+</phpunit>

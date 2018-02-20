@@ -1,0 +1,28 @@
+{
+    "name": "amiriun/pushe",
+    "description": "php wrapper for pushe.co push notification",
+    "type": "library",
+    "keywords": [push,push notification,notification,php push,php notification,laravel notification],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Amir Alian",
+            "email": "amircup2006@gmail.com",
+            "homepage": "https://github.com/amiriun/pushe",
+            "role": "developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.3",
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Amiriun\\Pushe\\": "src/"
+        }
+    }
+}

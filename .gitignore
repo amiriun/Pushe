@@ -1,0 +1,26 @@
+# composer dir and files
+vendor
+composer.phar
+#composer.lock
+
+# phpunit files
+phpunit.phar
+phpunit.xml
+test/coverage
+
+# netbeans project files
+nbproject
+
+# Mac DS_Store Files
+.DS_Store
+
+# phpstorm project files
+.idea
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
