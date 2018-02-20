@@ -10,7 +10,7 @@ To install Via Composer , use the command bellow:
 
 `composer require amiriun/pushe`
 
-##Usage
+###Usage
 
 
 ```php
