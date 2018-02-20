@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/amiriun/pushe/badge.svg?branch=master)](https://coveralls.io/github/amiriun/pushe?branch=master)
 
 
-#Instalation
+## Instalation
 
 
 To install Via Composer , use the command bellow:
@@ -14,7 +14,7 @@ composer require amiriun/pushe
 ```
 
 
-#Usage
+## Usage
 
 ```php
 use \Amiriun\Pushe\Configuration;
