@@ -2,12 +2,11 @@
 
 namespace Amiriun\Pushe;
 
+use Amiriun\Pushe\Actions\RequestToPushe;
+
 class Pushe
 {
 
-    public $appPackageNames = [];
-    public $token;
-    public $isAsync;
     public $title;
     public $content;
     public $sound;
@@ -15,15 +14,13 @@ class Pushe
     public $visibility;
     public $icon;
 
-    public function __construct($appPackageName, $token, $isAsync = false)
-    {
-        $this->setAppPackageNames($appPackageName);
-        $this->token = $token;
-        $this->isAsync = $isAsync;
-    }
-
     public function send()
     {
+        $action = new RequestToPushe();
+        $request = $action->send($this);
+
+        return "ok"; // todo
+//        return new PusheResponse($request);
 
     }
 
@@ -34,29 +31,31 @@ class Pushe
      */
     public function setAppPackageNames($value)
     {
-        if (is_array($value)) {
-            $this->appPackageNames = $this->appPackageNames + $value;
-
-            return $this;
-        }
-        $this->appPackageNames[] = $value;
+        Configuration::make()->setApplicationsPackageName($value);
 
         return $this;
     }
 
     public function getAppPackageNames()
     {
-        return $this->appPackageNames;
+        return Configuration::make()->getApplicationsPackageName();
     }
 
     public function getToken()
     {
-        return trim($this->token);
+        return Configuration::make()->getToken();
     }
 
     public function getIsAsync()
     {
-        return isset($this->isAsync);
+        return Configuration::make()->getIsAsync();
+    }
+
+    public function setIsAsync($value)
+    {
+        Configuration::make()->setIsAsync($value);
+
+        return $this;
     }
 
     public function filter(Filter $filter)
@@ -77,11 +76,15 @@ class Pushe
     public function setVisible()
     {
         $this->visibility = true;
+
+        return $this;
     }
 
     public function setInVisible()
     {
         $this->visibility = false;
+
+        return $this;
     }
 
     public function getVisibility()

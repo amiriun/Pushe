@@ -1,27 +1,23 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: amir
- * Date: 2/20/18
- * Time: 2:24 PM
- */
 
 namespace Amiriun\Pushe\Actions;
 
-
 use Amiriun\Pushe\Pushe;
+use GuzzleHttp\RequestOptions;
 
-class PushByAndroidId extends AbstractAction implements ActionInterface
+class RequestToPushe extends AbstractAction implements ActionInterface
 {
     public function send(Pushe $manager)
     {
-        $this->request(
+        $request = $this->request(
             'POST',
             '',
             [
-                'body' => $this->getRequestBody($manager)
+                RequestOptions::JSON => $this->getRequestBody($manager)
             ]
         );
+
+        return $request->getBody();
 
     }
 
@@ -32,10 +28,8 @@ class PushByAndroidId extends AbstractAction implements ActionInterface
      */
     public function getRequestBody($manager)
     {
-        // todo
         $data = [
             'applications' => $manager->getAppPackageNames(),
-            "filter"       => $manager->getFilter()->prepareData(),
             "notification" => [
                 "title"      => $manager->getTitle(),
                 'content'    => $manager->getContent(),
@@ -46,8 +40,8 @@ class PushByAndroidId extends AbstractAction implements ActionInterface
             ]
         ];
 
-        if (empty($manager->getFilter())) {
-            unset($data['filter']);
+        if (!empty($manager->getFilter())) {
+            $data["filter"] = $manager->getFilter()->prepareData();
         }
 
         return $data;
